@@ -2,6 +2,7 @@ import torch
 from .types import AudioData
 import torchaudio 
 from pathlib import Path
+from loguru import logger
 
 class AudioIO:
     """Load and save audio files"""
@@ -33,8 +34,9 @@ class AudioIO:
         # Add batch dimension if needed
         if waveform.ndim == 2:
             waveform = waveform.unsqueeze(0)
-        
+        logger.success(f"Succssfully loaded file at {file_path}, on {device}")
         return AudioData(waveform=waveform, sample_rate=sample_rate)
+    
     @staticmethod
     def save(
         audio: AudioData,
@@ -58,5 +60,5 @@ class AudioIO:
             waveform = waveform.squeeze(0)
         
         torchaudio.save(output_path, waveform.cpu(), audio.sample_rate)
+        logger.success(f"✓ Audio successfully saved at {output_path}")
 
-        print(f"✓ Audio successfully saved at {output_path}")

@@ -5,7 +5,7 @@ description = "Pure Python audio processing library - crop, combine, tempo match
 readme = "README.md"
 license = { text = "MIT" }
 authors = [
-    { name = "Audio Seperation Contributors" }
+    { name = "Parvesh" }
 ]
 keywords = ["audio", "processing", "music", "dsp", "tempo", "bpm"]
 classifiers = [
@@ -31,6 +31,7 @@ dependencies = [
     "torchaudio>=2.0.0",
     "librosa>=0.10.0",
     "numpy>=1.20.0",
+    "loguru>=0.7.0",
 ]
 
 [project.optional-dependencies]
@@ -52,11 +53,11 @@ all = [
 ]
 
 [project.urls]
-"Homepage" = "https://github.com/yourusername/audio-seperation"
-"Documentation" = "https://github.com/yourusername/audio-seperation#readme"
-"Repository" = "https://github.com/yourusername/audio-seperation.git"
-"Issues" = "https://github.com/yourusername/audio-seperation/issues"
-"Changelog" = "https://github.com/yourusername/audio-seperation/blob/main/CHANGELOG.md"
+"Homepage" = "https://github.com/Parveshiiii/sonic"
+"Documentation" = "https://github.com/Parveshiiii/sonic#readme"
+"Repository" = "https://github.com/Parveshiiii/sonic.git"
+"Issues" = "https://github.com/Parveshiiii/sonic/issues"
+"Changelog" = "https://github.com/Parveshiiii/sonic/blob/main/CHANGELOG.md"
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

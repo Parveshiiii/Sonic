@@ -8,6 +8,7 @@ from .processors import (
     AudioCropper, AudioCombiner, TempoShifter, 
     TempoDetector, TempoMatcher, AudioResampler
 )
+from loguru import logger
 
 __all__ = [
     "AudioProcessor",
@@ -42,8 +43,8 @@ class AudioProcessor:
             self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         else:
             self.device = torch.device(device)
-        
-        print(f"✓ Audio Processor initialized on {self.device}")
+        logger.success(f"✓ Audio Processor initialized on {self.device}")
+
 
     def crop(
         self,
@@ -64,7 +65,7 @@ class AudioProcessor:
         audio = AudioIO.load(input_file, self.device)
         cropped = AudioCropper.crop(audio, start, end)
         AudioIO.save(cropped, output_file)
-        print(f"✓ Cropped: {input_file} ({start}s - {end}s) → {output_file}")
+        logger.success(f"✓ Cropped: {input_file} ({start}s - {end}s) → {output_file}")
     
     def combine(
         self,
@@ -86,7 +87,7 @@ class AudioProcessor:
         audio2 = AudioIO.load(file2, self.device)
         combined = AudioCombiner.combine(audio1, audio2, method)
         AudioIO.save(combined, output_file)
-        print(f"✓ Combined: {file1} + {file2} ({method}) → {output_file}")
+        logger.success(f"✓ Combined: {file1} + {file2} ({method}) → {output_file}")
 
     def speed_change(
         self,
@@ -105,7 +106,7 @@ class AudioProcessor:
         audio = AudioIO.load(input_file, self.device)
         shifted = TempoShifter.shift(audio, rate)
         AudioIO.save(shifted, output_file)
-        print(f"✓ Speed changed: {input_file} (rate={rate}) → {output_file}")
+        logger.success(f"✓ Speed changed: {input_file} (rate={rate}) → {output_file}")
 
     def detect_bpm(
         self,
@@ -122,7 +123,7 @@ class AudioProcessor:
         """
         audio = AudioIO.load(input_file, self.device)
         bpm = TempoDetector.detect_bpm(audio)
-        print(f"✓ Detected BPM: {input_file} = {bpm:.1f}")
+        logger.success(f"✓ Detected BPM: {input_file} = {bpm:.1f}")
         return bpm
 
     def match_tempo(
@@ -146,9 +147,14 @@ class AudioProcessor:
         matched1, matched2 = TempoMatcher.match(audio1, audio2)
         AudioIO.save(matched1, output1)
         AudioIO.save(matched2, output2)
-        print(f"✓ Tempo matched: {file1} + {file2}")
-    
-    def resample(self, input_file: str, output_file: str, target_sample_rate: int) -> None:
+        logger.success(f"✓ Tempo matched: {file1} + {file2}")
+
+    def resample(
+        self,
+        input_file: str,
+        output_file: str,
+        target_sample_rate: int
+    ) -> None:
         """
         Resample audio to different sample rate
         
@@ -160,7 +166,7 @@ class AudioProcessor:
         audio = AudioIO.load(input_file, self.device)
         resampled = AudioResampler.resample(audio, target_sample_rate)
         AudioIO.save(resampled, output_file)
-        print(f"✓ Resampled: {input_file} → {output_file} ({target_sample_rate} Hz)")
+        logger.success(f"✓ Resampled: {input_file} → {output_file} ({target_sample_rate} Hz)")
 
     def batch_process(
         self,
@@ -184,7 +190,7 @@ class AudioProcessor:
                 method = getattr(self, op_name)
                 method(*args)
             except Exception as e:
-                print(f"✗ Error in {op_name}: {e}")
+                logger.error(f"✗ Error in {op_name}: {e}")
 
 
 
