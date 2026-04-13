@@ -14,8 +14,10 @@ class AudioData:
             "waveform": self.waveform,
             "sample_rate": self.sample_rate
         }
-    
     @classmethod
-    def from_dict(cls, data: Dict):
+    def from_dict(
+        cls,
+        data: Dict
+    ):
         """Create from dictionary"""
         return cls(waveform=data["waveform"], sample_rate=data["sample_rate"])

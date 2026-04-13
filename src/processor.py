@@ -9,6 +9,16 @@ from .processors import (
     TempoDetector, TempoMatcher, AudioResampler
 )
 
+__all__ = [
+    "AudioProcessor",
+    "AudioIO",
+    "AudioCropper",
+    "AudioCombiner",
+    "TempoShifter",
+    "TempoDetector",
+    "TempoMatcher",
+    "AudioResampler",
+]
 
 class AudioProcessor:
     """
@@ -18,8 +28,10 @@ class AudioProcessor:
         processor = AudioProcessor(device="cuda")
         processor.crop("song.wav", "cropped.wav", 30, 90)
     """
-    
-    def __init__(self, device: Optional[str] = None):
+    def __init__(
+        self,
+        device: Optional[str] = None
+    ):
         """
         Initialize processor
         
@@ -32,8 +44,14 @@ class AudioProcessor:
             self.device = torch.device(device)
         
         print(f"✓ Audio Processor initialized on {self.device}")
-    
-    def crop(self, input_file: str, output_file: str, start: float, end: float) -> None:
+
+    def crop(
+        self,
+        input_file: str,
+        output_file: str,
+        start: float,
+        end: float
+    ) -> None:
         """
         Crop audio file to time range
         
@@ -69,8 +87,13 @@ class AudioProcessor:
         combined = AudioCombiner.combine(audio1, audio2, method)
         AudioIO.save(combined, output_file)
         print(f"✓ Combined: {file1} + {file2} ({method}) → {output_file}")
-    
-    def speed_change(self, input_file: str, output_file: str, rate: float) -> None:
+
+    def speed_change(
+        self,
+        input_file: str,
+        output_file: str,
+        rate: float
+    ) -> None:
         """
         Change audio speed without changing pitch
         
@@ -83,8 +106,11 @@ class AudioProcessor:
         shifted = TempoShifter.shift(audio, rate)
         AudioIO.save(shifted, output_file)
         print(f"✓ Speed changed: {input_file} (rate={rate}) → {output_file}")
-    
-    def detect_bpm(self, input_file: str) -> float:
+
+    def detect_bpm(
+        self,
+        input_file: str
+    ) -> float:
         """
         Detect BPM of audio file
         
@@ -98,8 +124,14 @@ class AudioProcessor:
         bpm = TempoDetector.detect_bpm(audio)
         print(f"✓ Detected BPM: {input_file} = {bpm:.1f}")
         return bpm
-    
-    def match_tempo(self, file1: str, file2: str, output1: str, output2: str) -> None:
+
+    def match_tempo(
+        self,
+        file1: str,
+        file2: str,
+        output1: str,
+        output2: str
+    ) -> None:
         """
         Match tempo of two files by time-stretching to average BPM
         
@@ -129,8 +161,11 @@ class AudioProcessor:
         resampled = AudioResampler.resample(audio, target_sample_rate)
         AudioIO.save(resampled, output_file)
         print(f"✓ Resampled: {input_file} → {output_file} ({target_sample_rate} Hz)")
-    
-    def batch_process(self, operations: list) -> None:
+
+    def batch_process(
+        self,
+        operations: list
+    ) -> None:
         """
         Execute multiple operations in sequence
         
@@ -152,13 +187,4 @@ class AudioProcessor:
                 print(f"✗ Error in {op_name}: {e}")
 
 
-__all__ = [
-    "AudioProcessor",
-    "AudioIO",
-    "AudioCropper",
-    "AudioCombiner",
-    "TempoShifter",
-    "TempoDetector",
-    "TempoMatcher",
-    "AudioResampler",
-]
+

@@ -1,7 +1,7 @@
 """
-Quick Start Examples for Audio Seperation Library
+Quick Start Examples for Audio Separation Library
 
-Run with: python examples.py=
+Run with: python examples.py
 """
 # written by custom llm
 
@@ -159,7 +159,7 @@ def show_available_features():
 
 if __name__ == "__main__":
     print("\n╔" + "="*58 + "╗")
-    print("║" + " "*10 + "Audio Seperation Library - Examples" + " "*13 + "║")
+    print("║" + " "*10 + "Audio Separation Library - Examples" + " "*13 + "║")
     print("╚" + "="*58 + "╝")
     
     show_available_features()

@@ -3,9 +3,10 @@ from .types import AudioData
 
 class AudioUtils:
     """Helper functions for audio processing"""
-    
     @staticmethod
-    def ensure_stereo(waveform: torch.Tensor) -> torch.Tensor:
+    def ensure_stereo(
+        waveform: torch.Tensor
+    ) -> torch.Tensor:
         """
         Convert any channel configuration to stereo
         
@@ -36,16 +37,19 @@ class AudioUtils:
         
         # Multi-channel - downmix to stereo
         else:
-            waveform = waveform.narrow(channels_dim, 0, 2)
-            return waveform.repeat(1, 2, 1) if is_batched else waveform.repeat(2, 1)
+            return waveform.narrow(channels_dim, 0, 2)
     
     @staticmethod
-    def get_duration(audio: AudioData) -> float:
+    def get_duration(
+        audio: AudioData
+    ) -> float:
         """Get audio duration in seconds"""
         return audio.waveform.shape[-1] / audio.sample_rate
-    
     @staticmethod
-    def normalize(waveform: torch.Tensor, target_db: float = -20.0) -> torch.Tensor:
+    def normalize(
+        waveform: torch.Tensor,
+        target_db: float = -20.0
+    ) -> torch.Tensor:
         """
         Normalize audio to target loudness
         

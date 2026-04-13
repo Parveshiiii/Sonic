@@ -5,9 +5,11 @@ from pathlib import Path
 
 class AudioIO:
     """Load and save audio files"""
-    
     @staticmethod
-    def load(file_path: str, device: torch.device = None) -> AudioData:
+    def load(
+        file_path: str,
+        device: torch.device = None
+    ) -> AudioData:
         """
         Load audio file into AudioData format
         
@@ -33,9 +35,11 @@ class AudioIO:
             waveform = waveform.unsqueeze(0)
         
         return AudioData(waveform=waveform, sample_rate=sample_rate)
-    
     @staticmethod
-    def save(audio: AudioData, output_path: str) -> None:
+    def save(
+        audio: AudioData,
+        output_path: str
+    ) -> None:
         """
         Save audio to file
         
@@ -54,3 +58,5 @@ class AudioIO:
             waveform = waveform.squeeze(0)
         
         torchaudio.save(output_path, waveform.cpu(), audio.sample_rate)
+
+        print(f"✓ Audio successfully saved at {output_path}")

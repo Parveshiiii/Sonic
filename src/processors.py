@@ -167,7 +167,9 @@ class TempoDetector:
     """Detect BPM of audio using onset detection"""
     
     @staticmethod
-    def detect_bpm(audio: AudioData) -> float:
+    def detect_bpm(
+        audio: AudioData
+    ) -> float:
         """
         Detect BPM using librosa onset detection
         
@@ -207,12 +209,14 @@ class TempoDetector:
         mean_tempo = np.mean(tempo.flatten())
         return float(max(mean_tempo, 1.0))
 
-
 class TempoMatcher:
     """Match tempo of two audio tracks"""
     
     @staticmethod
-    def match(audio1: AudioData, audio2: AudioData) -> Tuple[AudioData, AudioData]:
+    def match(
+        audio1: AudioData,
+        audio2: AudioData
+    ) -> Tuple[AudioData, AudioData]:
         """
         Time-stretch both tracks to their average BPM
         
@@ -241,9 +245,11 @@ class TempoMatcher:
 
 class AudioResampler:
     """Resample audio to different sample rates"""
-    
     @staticmethod
-    def resample(audio: AudioData, target_sample_rate: int) -> AudioData:
+    def resample(
+        audio: AudioData,
+        target_sample_rate: int
+    ) -> AudioData:
         """
         Resample audio to target sample rate
         
