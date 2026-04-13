@@ -4,7 +4,7 @@ A complete audio processing library with no external UI requirements.
 Supports separation, combination, tempo detection, time-shifting, and resampling.
 
 Example:
-    from src.processor import AudioProcessor
+    from sonic.processor import AudioProcessor
     
     processor = AudioProcessor(device="cuda")
     processor.crop("song.wav", "cropped.wav", 30, 90)

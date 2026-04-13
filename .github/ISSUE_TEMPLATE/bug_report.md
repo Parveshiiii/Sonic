@@ -35,7 +35,7 @@ Paste the full error traceback here
 ## Minimal Code Example
 ```python
 # Minimal code to reproduce the issue
-from src.processor import AudioProcessor
+from sonic.processor import AudioProcessor
 processor = AudioProcessor()
 # ...
 ```

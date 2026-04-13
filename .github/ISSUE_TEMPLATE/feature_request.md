@@ -19,7 +19,7 @@ How should this feature work?
 ## Example Code
 ```python
 # How would you like to use this feature?
-from src.processor import AudioProcessor
+from sonic.processor import AudioProcessor
 processor = AudioProcessor()
 # ... your feature usage here
 ```

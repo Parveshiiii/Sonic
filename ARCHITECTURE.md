@@ -27,8 +27,8 @@ Raw Audio Data (AudioData) → Processing Logic → Processed Audio Data
 **Use when:** You already have audio loaded and want direct control
 
 ```python
-from src.processors import AudioCropper
-from src.audio_io import AudioIO
+from sonic.processors import AudioCropper
+from sonic.audio_io import AudioIO
 
 # Direct use
 audio = AudioIO.load("song.wav")
@@ -57,7 +57,7 @@ File Path → Load → Process → Save → File Path
 **Use when:** You want simple file operations without manual I/O
 
 ```python
-from src.processor import AudioProcessor
+from sonic.processor import AudioProcessor
 
 # Simple file-based workflow
 processor = AudioProcessor(device="cuda")
@@ -114,7 +114,7 @@ processor.crop("song.wav", "output.wav", 30, 90)
 ### Layer 1: High-Level (Easy, File-Based)
 
 ```python
-from src.processor import AudioProcessor
+from sonic.processor import AudioProcessor
 
 processor = AudioProcessor()
 processor.crop("input.wav", "output.wav", 30, 90)
@@ -130,8 +130,8 @@ processor.crop("input.wav", "output.wav", 30, 90)
 ### Layer 2: Low-Level (Flexible, Data-Based)
 
 ```python
-from src.processors import AudioCropper
-from src.audio_io import AudioIO
+from sonic.processors import AudioCropper
+from sonic.audio_io import AudioIO
 
 audio = AudioIO.load("input.wav")
 cropped = AudioCropper.crop(audio, 30, 90)
@@ -170,8 +170,8 @@ processor = AudioProcessor()
 processor.crop("in.wav", "out.wav", 30, 90)
 
 # Becomes:
-from src.processors import AudioCropper
-from src.audio_io import AudioIO
+from sonic.processors import AudioCropper
+from sonic.audio_io import AudioIO
 
 audio = AudioIO.load("in.wav")
 cropped = AudioCropper.crop(audio, 30, 90)

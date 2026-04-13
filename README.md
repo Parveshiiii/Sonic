@@ -32,7 +32,7 @@ pip install -e .
 ## Quick Start
 
 ```python
-from src.processor import AudioProcessor
+from sonic.processor import AudioProcessor
 
 # Initialize processor
 processor = AudioProcessor(device="cuda")  # or "cpu" for CPU
@@ -84,8 +84,8 @@ processor = AudioProcessor(device="cuda")  # or "cpu", or None for auto
 Load and save audio files.
 
 ```python
-from src.audio_io import AudioIO
-from src.types import AudioData
+from sonic.audio_io import AudioIO
+from sonic.types import AudioData
 
 # Load audio
 audio = AudioIO.load("song.wav", device="cpu")
@@ -99,7 +99,7 @@ AudioIO.save(audio, "output.wav")
 Use individual processors for more control:
 
 ```python
-from src.processors import (
+from sonic.processors import (
     AudioCropper, AudioCombiner, TempoShifter,
     TempoDetector, TempoMatcher, AudioResampler
 )
@@ -131,8 +131,8 @@ resampled = AudioResampler.resample(audio, target_sample_rate=48000)
 Helper functions for audio manipulation.
 
 ```python
-from src.utils import AudioUtils
-from src.types import AudioData
+from sonic.utils import AudioUtils
+from sonic.types import AudioData
 
 # Ensure stereo
 stereo_waveform = AudioUtils.ensure_stereo(waveform)
@@ -149,7 +149,7 @@ normalized = AudioUtils.normalize(waveform, target_db=-20.0)
 All audio is represented as `AudioData`:
 
 ```python
-from src.types import AudioData
+from sonic.types import AudioData
 
 audio = AudioData(
     waveform=torch.tensor(...),  # Shape: [Channels, Frames]
@@ -235,7 +235,7 @@ processor = AudioProcessor()               # Auto-detect
 ### Example 1: Extract Chorus
 
 ```python
-from src.processor import AudioProcessor
+from sonic.processor import AudioProcessor
 
 processor = AudioProcessor()
 
@@ -307,7 +307,7 @@ processor.speed_change("bgm.wav", "bgm_faster.wav", rate=1.2)
 
 ```
 audio-seperation/
-├── src/
+├── sonic/
 │   ├── __init__.py           # Package exports
 │   ├── types.py              # AudioData class
 │   ├── audio_io.py           # Load/save audio

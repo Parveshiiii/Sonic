@@ -16,7 +16,7 @@ Provide some context about your use case.
 ## Code Example
 ```python
 # Any relevant code?
-from src.processor import AudioProcessor
+from sonic.processor import AudioProcessor
 ```
 
 ## What you've tried

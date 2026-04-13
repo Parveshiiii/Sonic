@@ -60,11 +60,11 @@ all = [
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-addopts = "--cov=src --cov-report=term-missing --cov-report=html"
+addopts = "--cov=sonic --cov-report=term-missing --cov-report=html"
 
 [tool.coverage.run]
 branch = true
-source = ["src"]
+source = ["sonic"]
 
 [tool.black]
 line-length = 100

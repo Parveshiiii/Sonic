@@ -3,6 +3,6 @@ include LICENSE
 include CHANGELOG.md
 include CONTRIBUTING.md
 include ARCHITECTURE.md
-recursive-include src *.py
+recursive-include sonic *.py
 recursive-include tests *.py
 recursive-include examples *.py

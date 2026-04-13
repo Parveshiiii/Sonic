@@ -5,9 +5,9 @@ Run with: python examples.py
 """
 # written by custom llm
 
-from src.processor import AudioProcessor
-from src.audio_io import AudioIO
-from src.utils import AudioUtils
+from sonic.processor import AudioProcessor
+from sonic.audio_io import AudioIO
+from sonic.utils import AudioUtils
 import torch
 
 def example_1_crop_audio():
@@ -180,7 +180,7 @@ if __name__ == "__main__":
     print("QUICK START")
     print("="*60)
     print("""
-from src.processor import AudioProcessor
+from sonic.processor import AudioProcessor
 
 # Initialize
 processor = AudioProcessor(device="cuda")  # or "cpu"

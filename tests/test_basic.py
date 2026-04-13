@@ -1,4 +1,4 @@
-import src
+import sonic
 
 def test_import():
-    assert src is not None
+    assert sonic is not None
