@@ -6,7 +6,7 @@ Thank you for your interest in contributing! Here's how you can help.
 
 1. **Fork the repository**
    ```bash
-   git clone https://github.com/yourusername/audio-seperation.git
+   git clone https://github.com/Parveshiiii/Sonic.git
    cd audio-seperation
    ```
 
